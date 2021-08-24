@@ -1,0 +1,93 @@
+name: TrollCommandsDeluxe
+version: ${project.version}
+main: me.pastelrobots.trollcommandsdeluxe.TrollCommandsDeluxe
+api-version: 1.17
+prefix: TrollCommandsDeluxe
+authors: [ PastelRobots ]
+description: A plugin for trolling hackers or your "friends"
+website: https://discord.gg/VtgcZRnmMR
+
+commands:
+  fakeop:
+    description: Sends the target a fake op message!
+    permission: trollcommandsdeluxe.fakeop
+    aliases: [fop, fakeopmessage, fakeopmsg]
+  fakeban:
+    description: Kicks the player with a reason set in the config!
+    permission: trollcommandsdeluxe.fakeban
+    aliases: [ fban ]
+  rocket:
+    description: Launches the player with a velocity set in the config!
+    permission: trollcommandsdeluxe.rocket
+    aliases: [ launch, leap ]
+  explode:
+    description: Explodes the player with explosive power set in config!
+    permission: trollcommandsdeluxe.explode
+    aliases: [ tnt, nuke, blowup, bomb ]
+  butterfingers:
+    description: Drops the item in the player's hand!
+    permission: trollcommandsdeluxe.butterfingers
+    aliases: [ drophand, dhand, dropitem ]
+  fire:
+    description: Burns the player!
+    permission: trollcommandsdeluxe.fire
+    aliases: [ burn ]
+  smite:
+    description: Smites the player!
+    permission: trollcommandsdeluxe.smite
+    aliases: [ lightning, thunder ]
+  spamchat:
+    description: Spams the player's chat with random letters!
+    permission: trollcommandsdeluxe.spamchat
+    aliases: [ floodchat, schat, fchat, chatspam, chatflood ]
+  closeinventory:
+    description: Closes the player's current inventory, petty but hilarious in the right situation!
+    permission: trollcommandsdeluxe.closeinventory
+    aliases: [ cinv, closeinv, cinventory]
+
+permissions:
+  trollcommandsdeluxe.*:
+    description: Allows you to run every command within TrollCommandsDeluxe!
+    default: op
+    children:
+      trollcommandsdeluxe.bypass: true
+      trollcommandsdeluxe.fakeop: true
+      trollcommandsdeluxe.fakeban: true
+      trollcommandsdeluxe.rocket: true
+      trollcommandsdeluxe.explode: true
+      trollcommandsdeluxe.butterfingers: true
+      trollcommandsdeluxe.fire: true
+      trollcommandsdeluxe.smite: true
+      trollcommandsdeluxe.spamchat: true
+      trollcommandsdeluxe.closeinventory:
+
+  trollcommandsdeluxe.bypass:
+    description: Allows you to bypass troll commands!
+    default: op
+  trollcommandsdeluxe.rocket:
+    description: Allows you to run the rocket command!
+    default: op
+  trollcommandsdeluxe.fakeop:
+    description: Allows you to run the fakeop command!
+    default: op
+  trollcommandsdeluxe.fakeban:
+    description: Allows you to run the fakeban command!
+    default: op
+  trollcommandsdeluxe.explode:
+    description: Allows you to run the fakeban command!
+    default: op
+  trollcommandsdeluxe.butterfingers:
+    description: Allows you to run the butterfingers command!
+    default: op
+  trollcommandsdeluxe.fire:
+    description: Allows you to run the fire command!
+    default: op
+  trollcommandsdeluxe.smite:
+    description: Allows you to run the smite command!
+    default: op
+  trollcommandsdeluxe.spamchat:
+    description: Allows you to run the spamchat command!
+    default: op
+  trollcommandsdeluxe.closeinventory:
+    description: Allows you to run the closeinvetory command!
+    default: op

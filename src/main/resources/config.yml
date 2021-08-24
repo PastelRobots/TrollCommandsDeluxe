@@ -1,0 +1,30 @@
+# Hello welcome to the config!
+
+commands:
+  fakeop:
+    enabled: true
+  fakeban:
+    enabled: true
+    message: >
+      &fYou are banned from this server
+  rocket:
+    enabled: true
+    velocity: 15 # 0.4 Being a regular jump
+  explode:
+    enabled: true
+    power: 10 # 4 being a tnt
+    fire: true # Will there be fire in this explosion
+  butterfingers:
+    enabled: true
+  fire:
+    enabled: true
+  lightning:
+    enabled: true
+  spamchat:
+    enabled: true
+  closeinventory:
+    enabled: true
+
+console:
+  enabled-msg: true # Sends a message in console when the plugin turns on and off
+  debug-mode: false # Only enable if there's an issue!
