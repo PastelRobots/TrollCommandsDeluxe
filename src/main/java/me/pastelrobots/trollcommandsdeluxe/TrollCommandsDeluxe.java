@@ -22,6 +22,8 @@ public final class TrollCommandsDeluxe extends JavaPlugin {
 
         createCustomConfig();
         plugin = this;
+        int pluginId = 12566;
+        Metrics metrics = new Metrics(this, pluginId);
         if (plugin.getConfig().getBoolean("console.enabled-msg")) {
             Bukkit.getLogger().info(ChatColor.GOLD + "=============================================");
             Bukkit.getLogger().info(ChatColor.GREEN + "TrollCommandsDeluxe has been turned on!");
