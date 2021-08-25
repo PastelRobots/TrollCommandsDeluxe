@@ -11,16 +11,16 @@ import org.bukkit.entity.Player;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FakeBanCommand implements CommandExecutor {
+public class FakeCrashCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender s, Command c, String l, String[] args) {
-        if(!Config.getBoolean("commands.fakeban.enabled")) return true;
+        if(!Config.getBoolean("commands.fakecrash.enabled")) return true;
         if(s instanceof Player p) {
             if(args.length != 1) {
                 p.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "Invalid Arguments!");
             } else {
                 Player target = Bukkit.getPlayerExact(args[0]);
-                if (p.hasPermission("trollcommandsdeluxe.fakeban")) {
+                if (p.hasPermission("trollcommandsdeluxe.fakecrash")) {
                     if(target instanceof Player) {
                         if(target.hasPermission("trollcommandsdeluxe.bypass")) {
                             p.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + target.getName() + " bypasses this as they have the bypass permission!");
@@ -39,7 +39,7 @@ public class FakeBanCommand implements CommandExecutor {
                     if(target.hasPermission("trollcommandsdeluxe.bypass")) {
                         Bukkit.getLogger().warning(ChatColor.RED + "" + ChatColor.BOLD + target.getName() + " bypasses this as they have the bypass permission!");
                     } else {
-                        target.kickPlayer(ChatColor.translateAlternateColorCodes('&', Config.getString("commands.fakeban.message")));
+                        target.kickPlayer("Internal Exception: io.netty.handler.codec.DecoderException: java.lang.IndexOutOfBoundsException: Index: 27, Size: 5");
                     }
                 }
             }

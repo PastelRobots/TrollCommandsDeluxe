@@ -7,9 +7,10 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class SpamChatCommand implements CommandExecutor {
     public static String getAlphaNumericString(int n) {
@@ -52,6 +53,24 @@ public class SpamChatCommand implements CommandExecutor {
                                 target.sendMessage(getAlphaNumericString(20));
                             }
                         }
+                    } else if(args[0].toLowerCase().equals("global")) {
+                        if (s.hasPermission("trollcommandsdeluxe.spamchat.global")) {
+                            long t = System.currentTimeMillis();
+                            long end = t + 3000;
+                            while (System.currentTimeMillis() < end) {
+                                for (Player player : Bukkit.getServer().getOnlinePlayers()) {
+                                    if (!player.isOp() || !player.hasPermission("trollcommandsdeluxe.bypass")) {
+                                        player.sendMessage(getAlphaNumericString(20));
+                                    }
+
+                                }
+                                try {
+                                    Thread.sleep(25);
+                                } catch (InterruptedException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -79,9 +98,40 @@ public class SpamChatCommand implements CommandExecutor {
                             }
                         }
                     }
+                } else if(args[0].toLowerCase().equals("global")) {
+                        long t = System.currentTimeMillis();
+                        long end = t + 3000;
+                        while (System.currentTimeMillis() < end) {
+                            for (Player player : Bukkit.getServer().getOnlinePlayers()) {
+                                if (!player.isOp() || !player.hasPermission("trollcommandsdeluxe.bypass")) {
+                                    player.sendMessage(getAlphaNumericString(20));
+                                }
+
+                            }
+                            try {
+                                Thread.sleep(25);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                        }
                 }
             }
         }
         return false;
+    }
+
+    public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
+        if (args.length == 1) {
+            List<String> playerNames = new ArrayList<>();
+            Player[] players = new Player[Bukkit.getServer().getOnlinePlayers().size()];
+            Bukkit.getServer().getOnlinePlayers().toArray(players);
+            for (Player player : players) {
+                playerNames.add(player.getName());
+            }
+            playerNames.add("global");
+            return playerNames;
+
+        }
+        return null;
     }
 }

@@ -44,6 +44,30 @@ commands:
     description: Closes the player's current inventory, petty but hilarious in the right situation!
     permission: trollcommandsdeluxe.closeinventory
     aliases: [ cinv, closeinv, cinventory]
+  weak:
+    description: Makes the player very weak.
+    permission: trollcommandsdeluxe.weak
+    aliases: [ brittle ]
+  creeper:
+    description: Spawns a few charged creepers near the player
+    permission: trollcommandsdeluxe.creeper
+    aliases: [ creep ]
+  fakejoin:
+    description: Spawns a few charged creepers near the player
+    permission: trollcommandsdeluxe.fakejoin
+    aliases: [ fjoin, fakejoinmsg, fakejoinmessage, fjoinmsg ]
+  fakecrash:
+    description: Fakes a server crash on the player!
+    permission: trollcommandsdeluxe.fakecrash
+    aliases: [ fcrash, fakecrashmsg, fakecrashmessage, fcrashmsg ]
+  flip:
+    description: Makes the player do a 180!
+    permission: trollcommandsdeluxe.flip
+    aliases: [ 180, flipplayer ]
+  reload:
+      description: Reloads the config!
+      permission: trollcommandsdeluxe.reload
+      aliases: [ configreload, tcdreload, tcdreloadconfig ]
 
 permissions:
   trollcommandsdeluxe.*:
@@ -59,7 +83,13 @@ permissions:
       trollcommandsdeluxe.fire: true
       trollcommandsdeluxe.smite: true
       trollcommandsdeluxe.spamchat: true
-      trollcommandsdeluxe.closeinventory:
+      trollcommandsdeluxe.closeinventory: true
+      trollcommandsdeluxe.weak: true
+      trollcommandsdeluxe.creeper: true
+      trollcommandsdeluxe.fakejoin: true
+      trollcommandsdeluxe.fakecrash: true
+      trollcommandsdeluxe.reload: true
+      trollcommandsdeluxe.spamchat.global: true
 
   trollcommandsdeluxe.bypass:
     description: Allows you to bypass troll commands!
@@ -90,4 +120,22 @@ permissions:
     default: op
   trollcommandsdeluxe.closeinventory:
     description: Allows you to run the closeinvetory command!
+    default: op
+  trollcommandsdeluxe.weak:
+    description: Allows you to run the weak command!
+    default: op
+  trollcommandsdeluxe.creeper:
+    description: Allows you to run the creeper command!
+    default: op
+  trollcommandsdeluxe.fakejoin:
+    description: Allows you to run the fakejoin command!
+    default: op
+  trollcommandsdeluxe.fakecrash:
+    description: Allows you to run the fakecrash command!
+    default: op
+  trollcommandsdeluxe.reload:
+    description: Allows you to run the reload command!
+    default: op
+  trollcommandsdeluxe.spamchat.global:
+    description: Allows you to run the spamchat command globally!
     default: op

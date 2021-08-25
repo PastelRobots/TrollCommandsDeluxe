@@ -24,6 +24,25 @@ commands:
     enabled: true
   closeinventory:
     enabled: true
+  weak:
+    enabled: true
+    amplifier: 255 # They literally couldn't hurt a fly (Above this number won't work)
+    duration: 30
+  creeper:
+    enabled: true
+  fake-join:
+    enabled: true
+    usernames:
+      - 'PastelRobots'
+      - 'Herobrine'
+      - 'epicgamer123'
+      - 'Notch'
+  fakecrash:
+    enabled: true
+  flip:
+    enabled: true
+  pickpocket:
+    enabled: true
 
 console:
   enabled-msg: true # Sends a message in console when the plugin turns on and off

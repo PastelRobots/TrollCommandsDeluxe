@@ -10,9 +10,9 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.util.Vector;
 
-import java.util.Locale;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ExplodeCommand implements CommandExecutor {
     @Override
@@ -63,5 +63,19 @@ public class ExplodeCommand implements CommandExecutor {
             }
         }
         return false;
+    }
+
+    public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
+        if (args.length == 1) {
+            List<String> playerNames = new ArrayList<>();
+            Player[] players = new Player[Bukkit.getServer().getOnlinePlayers().size()];
+            Bukkit.getServer().getOnlinePlayers().toArray(players);
+            for (Player player : players) {
+                playerNames.add(player.getName());
+            }
+            return playerNames;
+
+        }
+        return null;
     }
 }
