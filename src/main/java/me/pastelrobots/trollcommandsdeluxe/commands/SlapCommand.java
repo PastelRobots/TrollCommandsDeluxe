@@ -1,9 +1,9 @@
 package me.pastelrobots.trollcommandsdeluxe.commands;
 
 import me.pastelrobots.trollcommandsdeluxe.Config;
-import me.pastelrobots.trollcommandsdeluxe.TrollCommandsDeluxe;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -12,21 +12,35 @@ import org.bukkit.entity.Player;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FakeBanCommand implements CommandExecutor {
+public class SlapCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender s, Command c, String l, String[] args) {
-        if(!Config.getBoolean("commands.fakeban.enabled")) return true;
+        if(!Config.getBoolean("commands.slap.enabled")) return true;
         if(s instanceof Player p) {
             if(args.length != 1) {
                 p.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "Invalid Arguments!");
             } else {
                 Player target = Bukkit.getPlayerExact(args[0]);
-                if (p.hasPermission("trollcommandsdeluxe.fakeban")) {
+                if (p.hasPermission("trollcommandsdeluxe.slap")) {
                     if(target instanceof Player) {
+                        Location loc = target.getLocation();
                         if(target.hasPermission("trollcommandsdeluxe.bypass")) {
                             p.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + target.getName() + " bypasses this as they have the bypass permission!");
                         } else {
-                            target.kickPlayer(ChatColor.translateAlternateColorCodes('&', Config.getString("commands.fakeban.message")));
+                            for (int i = 0; i < 10; ++i) {
+                                loc.setYaw((float) (loc.getYaw() + (Math.random() * 10)));
+                                try {
+                                    Thread.sleep(20);
+                                } catch (InterruptedException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                            target.teleport(loc);
+                            if (!(target.getHealth() >= Config.getInt("commands.slap.health"))) {
+                                target.setHealth(0);
+                            } else {
+                                target.setHealth(target.getHealth() - Config.getInt("commands.slap.health"));
+                            }
                         }
                     }
                 }
@@ -37,11 +51,23 @@ public class FakeBanCommand implements CommandExecutor {
             } else {
                 Player target = Bukkit.getPlayerExact(args[0]);
                 if(target instanceof Player) {
+                    Location loc = target.getLocation();
                     if(target.hasPermission("trollcommandsdeluxe.bypass")) {
                         Bukkit.getLogger().warning(ChatColor.RED + "" + ChatColor.BOLD + target.getName() + " bypasses this as they have the bypass permission!");
                     } else {
-                        for (String msgs : TrollCommandsDeluxe.plugin.getConfig().getStringList("info.msg")) {
-                            target.kickPlayer(ChatColor.translateAlternateColorCodes('&', msgs));
+                        for (int i = 0; i < 10; ++i) {
+                            loc.setYaw((float) (loc.getYaw() + (Math.random() * 10)));
+                            try {
+                                Thread.sleep(20);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                        target.teleport(loc);
+                        if (!(target.getHealth() >= Config.getInt("commands.slap.health"))) {
+                            target.setHealth(0);
+                        } else {
+                            target.setHealth(target.getHealth() - Config.getInt("commands.slap.health"));
                         }
                     }
                 }

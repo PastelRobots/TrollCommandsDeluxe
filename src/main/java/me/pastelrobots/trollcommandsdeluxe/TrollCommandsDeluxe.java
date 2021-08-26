@@ -21,7 +21,7 @@ public final class TrollCommandsDeluxe extends JavaPlugin {
     @Override
     public void onEnable() {
         plugin = this;
-        ConfigFile.setup();
+        onConfigNotExisting();
         saveDefaultConfig();
         File configFile = new File(getDataFolder(), "config.yml");
 
@@ -124,8 +124,29 @@ public final class TrollCommandsDeluxe extends JavaPlugin {
             switch (c) {
                 case "flip": {
                     getCommand(c).setExecutor(new FlipCommand());
+                    break;
                 }
             }
+            switch (c) {
+                case "reload": {
+                    getCommand(c).setExecutor(new ReloadCommand());
+                    break;
+                }
+            }
+            switch (c) {
+                case "slap": {
+                    getCommand(c).setExecutor(new SlapCommand());
+                }
+            }
+        }
+    }
+
+    public void onConfigNotExisting() {
+        File configFile = new File(this.getDataFolder(), "config.yml");
+        if(!configFile.exists()) {
+            ConfigFile.setup();
+            ConfigFile.save();
+            ConfigFile.reload();
         }
     }
 

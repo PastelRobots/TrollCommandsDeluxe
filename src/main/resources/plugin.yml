@@ -68,6 +68,10 @@ commands:
       description: Reloads the config!
       permission: trollcommandsdeluxe.reload
       aliases: [ configreload, tcdreload, tcdreloadconfig ]
+  slap:
+    description: Slaps the player! (Turns them around a bit and do a damage amount set in config
+    permission: trollcommandsdeluxe.reload
+    aliases: [ configreload, tcdreload, tcdreloadconfig ]
 
 permissions:
   trollcommandsdeluxe.*:
@@ -90,6 +94,7 @@ permissions:
       trollcommandsdeluxe.fakecrash: true
       trollcommandsdeluxe.reload: true
       trollcommandsdeluxe.spamchat.global: true
+      trollcommandsdeluxe.slap: true
 
   trollcommandsdeluxe.bypass:
     description: Allows you to bypass troll commands!
@@ -138,4 +143,7 @@ permissions:
     default: op
   trollcommandsdeluxe.spamchat.global:
     description: Allows you to run the spamchat command globally!
+    default: op
+  trollcommandsdeluxe.slap:
+    description: Allows you to run the slap command!
     default: op
